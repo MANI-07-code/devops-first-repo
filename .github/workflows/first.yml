@@ -1,10 +1,17 @@
-name: Demo Pipeline
+name: Python CI
 
 on: push
 
 jobs:
-  My-test-job:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: manikandan
-        run: echo "CI Pipeline Running"
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Run Python
+        run: python --version
